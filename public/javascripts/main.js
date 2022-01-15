@@ -44,7 +44,7 @@ for (var v = 0; v < Agents.length; v++) {
     }
 }
 aboutbutton.onclick = function () {
-	xtip.win({type:'alert', tip:'描述：2048小游戏<br>作者：Linpure<br>时间：2017-11-11<br>更新时间：2022-1-15<br>主页：<a href="https://gitee.com/linpure" target="_blank">gitee</a><br>', icon:'a', title:'关于',shade:false, min:true});
+	xtip.win({type:'alert', tip:'描述：2048小游戏<br>作者：Linpure<br>时间：2017-11-11<br>更新时间：2022-1-15<br>主页：<a href="https://gitee.com/linpure" target="_blank">gitee</a><br>吾爱：<a href="https://www.52pojie.cn/?694168" target="_blank">白小飞V</a>', icon:'a', title:'关于',shade:false, min:true});
 }
 mimibutton.onclick = function () {
 	xtip.win({type:'alert', tip:'上滑：move(0,size)<br>下滑：move(1,size)<br>左滑：move(2,size)<br>右滑：move(3,size)<br>重玩：NewGame()<br>排名：loadScore()<br>静音：CloseVoice()<br>绘制：DrawCell()<br>绘格：DrawOneCell(i,j)<br>数据：numArray[i][j]<br>分数：saveScore(maxNum, score)<br>', icon:'a', title:'指令',shade:false, min:true});
