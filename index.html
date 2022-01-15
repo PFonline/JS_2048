@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>2048</title>
+  <link rel="shortcut icon" href="./public/images/favicon.ico" />
+  <link rel='stylesheet' href='./public/stylesheets/style.css' />
+  <link rel='stylesheet' href='./public/stylesheets/xtiper.css' />
+</head>
+
+<body>
+  <!--
+    作者：Linpure
+    QQ：1873252161@qq.com
+    时间：2017-11-11
+    描述：2048小游戏
+    修改时间：2020-3-30
+    更新时间：2022-1-15
+  -->
+  <div id="mainBody">
+    <div id="title">
+      <div id="gameName">2048</div>
+      <div id="scoreCon">
+        <span id="t1">SCORE</span>
+        <span id="score">0</span>
+      </div>
+      <div id="lastScoreCon">
+        <span id="t2">LAST SCORE</span>
+        <span id="lastScore">0</span>
+      </div>
+    </div>
+    <div id="newgameCon">
+      <!-- 青春啊~ -->
+      <!-- <span id="text">别害怕风雨一直向前跑O(∩_∩)O</span> -->
+      <span id="text">黎明前乃至暗</span>
+      <div id="mimibutton"></div>
+      <div id="socrebutton"></div>
+      <div id="voicebutton"></div>
+      <div id="newgamebutton"></div>
+      <div id="aboutbutton"></div>
+    </div>
+    <canvas id="canvas" width="500" height="500"></canvas>
+  </div>
+  <div class= "wrapperSuc" style="display:none">
+	<span class="titleSuc">哇哦！你好棒哦！！！</span>
+	  <div class= "textSuc" data-text= "2048"></div>
+	</div>
+  <audio id="audioCon" src="./public/audio/voice.mp3" type="audio/mp3"></audio>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./public/javascripts/main.js"></script>
+  <script src="./public/javascripts/xtiper.min.js"></script>
+</body>
+
+</html>

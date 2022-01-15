@@ -1,0 +1,318 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "幼圆";
+}
+* { touch-action: pan-y; } 
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#mainBody {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 204, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+#title {
+  width: 90vw;
+  min-width: 300px;
+  max-width: 500px;
+  height: 10vh;
+  position: relative;
+}
+
+#gameName {
+  position: absolute;
+  width: 36%;
+  height: 100%;
+  font-size: 8vh;
+  font-weight: 900;
+  line-height: 10vh;
+  text-align: left;
+  font-family: "Century";
+  color: #8f7a66;
+}
+
+#scoreCon {
+  position: absolute;
+  width: 20%;
+  left: 38%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #9F8B77;
+}
+
+#lastScoreCon {
+  position: absolute;
+  width: 40%;
+  right: 0;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #9F8B77;
+}
+
+@media only screen and (min-width: 500px) {
+	#t1,#t2 {
+	  font-size: 25px;
+	  color: rgb(255, 244, 233);
+	  top: 5%;
+	}
+	#score,#lastScore  {
+	  top: 50%;
+	  font-size: 30px;
+	  color: white;
+	}
+	#t1, #score, #t2, #lastScore{
+		display: block;
+		width: 100%;
+		height: 45%;
+		position: absolute;
+		text-align: center;
+		font-weight: 900;
+	}
+}
+@media only screen and (max-width: 500px) {
+	#gameName {
+		font-size: 14vw;
+	}
+	#t1,#t2 {
+	  font-size: 20px;
+	  color: rgb(255, 244, 233);
+	  top: 5%;
+	}
+	#score,#lastScore  {
+	  top: 45%;
+	  font-size: 30px;
+	  color: white;
+	}
+	#t1, #score, #t2, #lastScore{
+		display: block;
+		width: 100%;
+		height: 45%;
+		position: absolute;
+		text-align: center;
+		font-weight: 900;
+	}
+}
+
+#newgameCon {
+  position: relative;
+  width: 90vw;
+  min-width: 300px;
+  max-width: 500px;
+  margin: 10px 0 10px 0;
+  height: 7vh;
+  cursor: pointer;
+}
+
+#text {
+  font-family: "楷体";
+  display: block;
+  width: 60vw;
+  height: 100%;
+  position: absolute;
+  text-align: left;
+  font-size: 1.2em;
+  line-height: 3vh;
+  color: #9F8B77;
+  top: 2vh;
+}
+@media only screen and (max-width: 400px) {
+	#text {
+		font-size: 18px;
+	}
+}
+@media only screen and (max-width: 360px) {
+	#text {
+		font-size: 16px;
+	}
+}
+@media only screen and (max-width: 320px) {
+	#text {
+		font-size: 14px;
+	}
+}
+#aboutbutton {
+  position: absolute;
+  right: 160px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #9F8B77;
+  background-image: url(../images/about.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  top: 1vh;
+  cursor: pointer;
+}
+
+#mimibutton {
+  position: absolute;
+  right: 120px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #9F8B77;
+  background-image: url(../images/mimi.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  top: 1vh;
+  cursor: pointer;
+}
+#socrebutton {
+  position: absolute;
+  right: 80px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #9F8B77;
+  background-image: url(../images/socre.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  top: 1vh;
+  cursor: pointer;
+}
+#voicebutton {
+  position: absolute;
+  right: 40px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #9F8B77;
+  background-image: url(../images/voice.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  top: 1vh;
+  cursor: pointer;
+}
+
+#newgamebutton {
+  position: absolute;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #9F8B77;
+  background-image: url(../images/newgame.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: center;
+  top: 1vh;
+}
+
+#canvas {
+  width: 90vw;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+#overShow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(187, 173, 160, .5);
+  display: none;
+}
+
+#textCon {
+  width: 20%;
+  height: 20%;
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  text-align: center;
+  font-size: 25px;
+  background-color: #9f8b77;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+#textCon span {
+  display: block;
+  font-family: "楷体";
+  font-weight: 600;
+  line-height: 35px;
+  color: #d8d3ce;
+}
+
+#overShowNew {
+  width: 100%;
+  height: 32%;
+  background: linear-gradient(to bottom,
+      rgba(187, 173, 160, 0) 0%,
+      rgba(187, 173, 160, 0.1) 15%,
+      rgba(187, 173, 160, 0.3) 30%,
+      rgba(187, 173, 160, 0.5) 50%,
+      rgba(187, 173, 160, 0.6) 85%,
+      rgba(187, 173, 160, 0.6) 100%);
+  position: relative;
+  top: 25%;
+  font-family: "楷体";
+  line-height: 50px;
+  color: #f7f1eb;
+}
+
+
+.wrapperSuc{
+  background: #252854;
+  width: 700px;
+  left: 50%;
+  top: 50%;
+  margin-left: -350px;
+  margin-top: -200px;
+  height:400px;
+  border-radius: 5px;
+  position: relative;  
+  padding-top: 20px;
+  text-align: center;
+}
+.titleSuc{
+	font-size: 30px;
+	color: #d4d7ff;
+}
+.textSuc{
+  flex: 0 0 100%;
+  font-size: 14rem;
+  font-weight: 900;
+  color: #00000000;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-bottom: 1px solid #d4d7ff;
+  border-top: 1px solid #d4d7ff;
+  background: url(../images/source.gif);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+   
+ .textSuc:after{
+   content: attr(data-text);
+   -webkit-text-stroke: 1.5px #d4d7ff;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   border-bottom: 1px solid #d4d7ff;
+   border-top: 1px solid #d4d7ff;
+   transform: translate(-50%, -49%);
+   background: url(../images/source.gif);
+   background-clip: text;
+   -webkit-background-clip: text;
+   background-size: 43%;
+ 
+}
