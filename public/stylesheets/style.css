@@ -213,10 +213,10 @@ body {
   top: 1vh;
 }
 
-#canvas {
-  width: 90vw;
-  min-width: 300px;
-  max-width: 500px;
+#board {
+  position: relative;
+  background-color: #bbada0;
+  border-radius: 5px;
 }
 
 #overShow {

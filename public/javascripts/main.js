@@ -1,5 +1,3 @@
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
 var numArray = [
     [0, 0, 0, 0],
     [0, 0, 0, 0],
@@ -16,7 +14,6 @@ var overShow = document.getElementById('overShow');
 var lastScore = document.getElementById('lastScore');
 var scoreShow = document.getElementById('score');
 var audioCon = document.getElementById('audioCon'); /*音频*/
-var isMobile = false;
 const size = 4;
 var score = 0;
 var flag = 0; /*判断是否达到2048*/
@@ -29,20 +26,41 @@ var UpPoint = {
     x: 0,
     y: 0
 }
-canvas.width = canvas.width;
-/*板面*/
-ctx.fillStyle = '#bbada0';
-ctx.fillRect(0, 0, 500, 500);
+
 /*判断移动端*/
-var userAgentInfo = navigator.userAgent.toLowerCase();
-var Agents = ["android","iphone",
-    "symbianos", "windows phone",
-    "ipad", "ipod"];
-for (var v = 0; v < Agents.length; v++) {
-    if (userAgentInfo.indexOf(Agents[v]) >= 0) {
-        isMobile = true;
+
+function isMobile(){
+    var userAgentInfo = navigator.userAgent.toLowerCase();
+    var Agents = ["android","iphone",
+        "symbianos", "windows phone",
+        "ipad", "ipod"];
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) >= 0) {
+            return true;
+        }
     }
+    return false;
 }
+
+/*板面*/
+if (isMobile()) {
+    $('#board').css({
+        'width':'90vw',
+        'height':'90vw',
+    });
+} else {
+    $('#board').css({
+        'width':'500px',
+        'height':'500px',
+        // 'margin':'0 auto',
+    });
+}
+
+
+
+
+
+
 aboutbutton.onclick = function () {
 	xtip.win({type:'alert', tip:'描述：2048小游戏<br>作者：Linpure<br>时间：2017-11-11<br>更新时间：2022-1-15<br>主页：<a href="https://gitee.com/linpure" target="_blank">gitee</a><br>吾爱：<a href="https://www.52pojie.cn/?694168" target="_blank">白小飞V</a>', icon:'a', title:'关于',shade:false, min:true});
 }
@@ -63,61 +81,101 @@ voicebutton.onclick = function () {
 
 /*绘制一个格子*/
 function DrawOneCell(i,j) {
+    //pc
     var dis = 12;
     var width = 110;
     var x = (j + 1) * dis + j * width;
     var y = (i + 1) * dis + i * width;
+    // mobile
+    var dis_m = 2;
+    var width_m = 20;
+    var x_m = (j + 1) * dis_m + j * width_m;
+    var y_m = (i + 1) * dis_m + i * width_m;
+    var grid = $("<div></div>");
+    var bgcolor = "#ccc0b3";
     switch (numArray[i][j]) {
         case 0:
-            ctx.fillStyle = '#ccc0b3';
+            bgcolor = '#ccc0b3';
             break;
         case 2:
-            ctx.fillStyle = '#eee4da';
+            bgcolor = '#eee4da';
             break;
         case 4:
-            ctx.fillStyle = '#ede0c8';
+            bgcolor = '#ede0c8';
             break;
         case 8:
-            ctx.fillStyle = '#f2b179';
+            bgcolor = '#f2b179';
             break;
         case 16:
-            ctx.fillStyle = '#f59563';
+            bgcolor = '#f59563';
             break;
         case 32:
-            ctx.fillStyle = '#f67c5f';
+            bgcolor = '#f67c5f';
             break;
         case 64:
-            ctx.fillStyle = '#f65e3b';
+            bgcolor = '#f65e3b';
             break;
         case 128:
-            ctx.fillStyle = '#edcf72';
+            bgcolor = '#edcf72';
             break;
         case 256:
-            ctx.fillStyle = '#ff9900';
+            bgcolor = '#ff9900';
             break;
         case 512:
-            ctx.fillStyle = '#9c0';
+            bgcolor = '#9c0';
             break;
         case 1024:
-            ctx.fillStyle = '#33b5e5';
+            bgcolor = '#33b5e5';
             break;
         case 2048:
-            ctx.fillStyle = '#8e7cc3';//09c
+            bgcolor = '#8e7cc3';//09c
             break;
         case 4096:
-            ctx.fillStyle = '#a6c';
+            bgcolor = '#a6c';
             break;
         case 8192:
-            ctx.fillStyle = '#93';
+            bgcolor = '#931';
+            break;
+        default:
+            bgcolor = "#ccc0b3";            
             break;
     }
-    ctx.fillRect(x, y, width, width);
-    if (numArray[i][j] !== 0) {
-        ctx.fillStyle = '#000';
-        ctx.font = "50px Arial";
-        var fontWidth = ctx.measureText(numArray[i][j]).width;
-        ctx.fillText(numArray[i][j], x + (width - fontWidth) / 2, y + 70);
+    grid.css({
+        'position':'absolute',
+        'background-color':bgcolor,
+        'font':"50px Arial",
+        'border-radius': '5px',
+        'text-align':'center',
+        'animation-duration': '0.3s',
+    });
+    if (isMobile()) {
+        grid.css({
+            'left':x_m+'vw',
+            'top':y_m+'vw',
+            'width':width_m+'vw',
+            'height':width_m+'vw',
+            'line-height':width_m+'vw',
+            'font-size':'34px',
+        });
+    } else {
+        grid.css({
+            'left':x+'px',
+            'top':y+'px',
+            'width':width+'px',
+            'height':width+'px',
+            'line-height':width+'px',
+        });
     }
+
+    grid.addClass('grid');
+
+    grid.addClass('animated fadeIn');
+
+    if (numArray[i][j] !== 0) {
+        grid.text(numArray[i][j]);
+    }
+
+    $('#board').append(grid);
 }
 /*绘制小格*/
 var DrawCell = function () {
@@ -143,11 +201,11 @@ var NewGame = function () {
     NewNum(2, 1);
     DrawCell();
     /*电脑端鼠标滑动事件*/
-	canvas.addEventListener('mousedown', mousedown_pc);
-	canvas.addEventListener('mouseup', mouseup_pc);
+	board.addEventListener('mousedown', mousedown_pc);
+	board.addEventListener('mouseup', mouseup_pc);
 	/*手机端滑动事件*/
-	canvas.addEventListener('touchstart', touchstart_phone);
-	canvas.addEventListener('touchend', touchend_phone);
+	board.addEventListener('touchstart', touchstart_phone);
+	board.addEventListener('touchend', touchend_phone);
 	/*阻止默认事件*/
 	window.addEventListener('touchmove', function (e) {
 		e.preventDefault();
@@ -251,10 +309,10 @@ function JudgeEvent(num) {
         xtip.win({type:'confirm', tip:'就差一点点了，太遗憾了！<br>本次分数：'+ score +'<br>最大数：'+getMaxNum()+'<br>'+'提交分数，再来一次？',icon:'a',shade:true,shadeClose:false,btn1:function(){
         	lastScore.innerHTML = score;
         	saveScore(getMaxNum(), score);
-        	canvas.removeEventListener("mousedown", mousedown_pc);
-        	canvas.removeEventListener("mouseup", mouseup_pc);
-        	canvas.removeEventListener('touchstart', touchstart_phone);
-			canvas.removeEventListener('touchend', touchend_phone);
+        	board.removeEventListener("mousedown", mousedown_pc);
+        	board.removeEventListener("mouseup", mouseup_pc);
+        	board.removeEventListener('touchstart', touchstart_phone);
+			board.removeEventListener('touchend', touchend_phone);
         	document.removeEventListener('keydown', keydown_pc);
         	NewGame();
         	} 
