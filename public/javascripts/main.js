@@ -58,9 +58,6 @@ if (isMobile()) {
 
 
 
-
-
-
 aboutbutton.onclick = function () {
 	xtip.win({type:'alert', tip:'描述：2048小游戏<br>作者：Linpure<br>时间：2017-11-11<br>更新时间：2022-1-15<br>主页：<a href="https://gitee.com/linpure" target="_blank">gitee</a><br>吾爱：<a href="https://www.52pojie.cn/?694168" target="_blank">白小飞V</a>', icon:'a', title:'关于',shade:false, min:true});
 }
@@ -638,7 +635,7 @@ function loadScore(){
         icon: '',
         title: "排行榜",
         min: true,
-        width: isMobile == true ? '80%':'500px',
+        width: isMobile() == true ? '80%':'400px',
         shade: false,
         shadeClose: true,
         lock: false,
