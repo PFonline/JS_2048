@@ -173,9 +173,12 @@ function DrawOneCell(i,j) {
     }
 
     $('#board').append(grid);
+    grid.removeClass('animated fadeIn');
 }
 /*绘制小格*/
 var DrawCell = function () {
+
+    $('#board').empty();
     for (var i = 0; i < size; i++) {
         for (var j = 0; j < size; j++) {
             DrawOneCell(i,j);
@@ -539,8 +542,8 @@ var IsTarget = function () {
             for (var j = 0; j < 4; j++) {
                 if (numArray[i][j] === 2048) {
                     //alert('哇哦~~ 2048！你好棒哦！！！加油！');
-                    $('.wrapperSuc').show();
-                    setTimeout(function(){$('.wrapperSuc').hide()}, 3000);
+                    xtip.alert('2048！恭喜你！','s',{times:3,title:'Congratulation！',btn:'继续加油'})
+                    $('.xtiper_pad').addClass('congratulate');
                     flag = 1;
                     break;
                 }
